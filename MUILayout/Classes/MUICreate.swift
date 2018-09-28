@@ -21,16 +21,20 @@ public class mui {
         }
         
         
-        public static func imageView(_ imageName: String) -> UIImageView {
-            let v = UIImageView(image: UIImage(named: imageName))
-            v.translatesAutoresizingMaskIntoConstraints = false
-            return v
-        }
-        
-        public static func imageView() -> UIImageView {
-            let v = UIImageView()
-            v.translatesAutoresizingMaskIntoConstraints = false
-            return v
+        public static func imageView(_ imageName: String? = nil, tinted: UIColor? = nil) -> UIImageView {
+            let iv = UIImageView()
+            iv.translatesAutoresizingMaskIntoConstraints = false
+            iv.tintColor = tinted
+            
+            if !mui.tools.isNilOrEmtpy(imageName) {
+                iv.image = UIImage(named: imageName!)
+             
+                if tinted != nil {
+                    iv.image = iv.image?.withRenderingMode(.alwaysTemplate)
+                }
+            }
+            
+            return iv
         }
         
         
@@ -70,29 +74,28 @@ public class mui {
             return btn
         }
         
-        public static func button(title: String, fontWeight: kFontWeight, fontSize: CGFloat, color: UIColor!, alignment: UIControl.ContentHorizontalAlignment = .center) -> UIButton {
+        public static func button(title: String, fontStyle: mui.fonts.kMUIFont, fontSize: CGFloat, color: UIColor!, alignment: UIControl.ContentHorizontalAlignment = .center) -> UIButton {
             let btn = UIButton()
             btn.translatesAutoresizingMaskIntoConstraints = false
-            btn.titleLabel?.font = UIFont.mui.font(fontWeight, fontSize)
+            btn.titleLabel?.font = fontStyle.font(size: fontSize)
             btn.contentHorizontalAlignment = alignment
             
             return btn
         }
         
-        //    // TPTextField
-        //    //
-        //    static func tpPasswordTextField() -> TPTextField {
-        //        let tf = TPTextField(fontType: .csRegular14Left, color: .taWhite)
-        //        tf.font = kTPRAttributedStringType.csRegular14Left.font
-        //        tf.isSecureTextEntry = true
-        //        tf.translatesAutoresizingMaskIntoConstraints = false
-        //        tf.attributedPlaceholder = TPTools.attributedString(NSLocalizedString("Enter your password.", comment: "TPTools_EnterPassword."), type: .csRegular14Left, color: .taBrownishGrey)
-        //        tf.autocorrectionType = .no
-        //        tf.spellCheckingType = .no
-        //        tf.autocapitalizationType = .none
-        //        tf.contentVerticalAlignment = .center
-        //        return tf
-        //    }
+        
+        static func tpPasswordTextField() -> MUITextField {
+            let tf = MUITextField()
+            //tf.font = kTPRAttributedStringType.csRegular14Left.font
+            tf.isSecureTextEntry = true
+            tf.translatesAutoresizingMaskIntoConstraints = false
+            //tf.attributedPlaceholder = TPTools.attributedString(NSLocalizedString("Enter your password.", comment: "TPTools_EnterPassword."), type: .csRegular14Left, color: .taBrownishGrey)
+            tf.autocorrectionType = .no
+            tf.spellCheckingType = .no
+            tf.autocapitalizationType = .none
+            tf.contentVerticalAlignment = .center
+            return tf
+        }
         //
         //
         //    // #selector(handleRefresh(_:))
@@ -128,6 +131,60 @@ public class mui {
     //    }
     
     //MARK: UI Helpers
+    
+    
+    public struct fonts {
+        public static var defaultFontSize: CGFloat = 15.5
+        
+        public enum kMUIFont {
+            case light, regular, medium, bold, condensed
+            
+            func font(size: CGFloat = mui.fonts.defaultFontSize) -> UIFont {
+                switch self {
+                case .bold:
+                    return mui.fonts.bold(fontSize: size)
+                case .light:
+                    return mui.fonts.light(fontSize: size)
+                case .medium:
+                    return mui.fonts.medium(fontSize: size)
+                case .regular:
+                    return mui.fonts.regular(fontSize: size)
+                case .condensed:
+                    return mui.fonts.condensed(fontSize: size)
+                    
+                }
+            }
+        }
+        
+        
+        private static func regular(fontSize: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-Regular", size: fontSize)!
+        }
+        
+        private static func medium(fontSize: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-Medium", size: fontSize)!
+        }
+        
+        private static func bold(fontSize: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-Bold", size: fontSize)!
+        }
+        
+        private static func light(fontSize: CGFloat) -> UIFont {
+            return UIFont(name: "Roboto-Light", size: fontSize)!
+        }
+        
+        private static func condensed(fontSize: CGFloat) -> UIFont {
+            return UIFont(name: "RobotoCondensed-Regular", size: fontSize)!
+        }
+        
+        
+        public static func attributes() -> [String:Any]{
+            let attr = [String:Any]()
+            
+            return attr
+        }
+
+    }
     
     
     public struct gestureRecognizer {
@@ -169,6 +226,10 @@ public class mui {
     }
     
     public struct tools {
+        public static func isNilOrEmtpy(_ str: String?) -> Bool {
+            return str != nil && !str!.isEmpty
+        }
+        
         public static func appNameAndVersionNumberDisplayString(_ devMode:String = "") -> String {
             let dict:NSDictionary = Bundle.main.infoDictionary! as NSDictionary
             let majorVersion:String = dict.object(forKey: "CFBundleShortVersionString") as! String
@@ -210,30 +271,41 @@ public class mui {
     
     // Pin to safe area
     //
-    public func pinVerticalSafeArea(_ controller: UIViewController, target view: UIView, standardSpacing: CGFloat = 0){
-        if #available(iOS 11, *) {
-            let guide = controller.view.safeAreaLayoutGuide
-            NSLayoutConstraint.activate([
-                view.topAnchor.constraint(equalTo: guide.topAnchor, constant: standardSpacing),
-                guide.bottomAnchor.constraint(equalToSystemSpacingBelow: view.bottomAnchor, multiplier: 1.0)
-                ])
-            
-        } else {
-            NSLayoutConstraint.activate([
-                view.topAnchor.constraint(equalTo: controller.topLayoutGuide.bottomAnchor, constant: standardSpacing),
-                controller.bottomLayoutGuide.topAnchor.constraint(equalTo: view.bottomAnchor, constant: standardSpacing)
-                ])
-        }
-    }
     
-    public func pinTopSafeArea(_ controller: UIViewController, target view: UIView, standardSpacing: CGFloat = 0){
+    public enum kSafeLayoutAnchor { case top, bottom, fillVertical }
+    
+    public func pinSafeArea(_ controller: UIViewController, target view: UIView, mode: kSafeLayoutAnchor, standardSpacing: CGFloat = 0){
         if #available(iOS 11, *) {
             let guide = controller.view.safeAreaLayoutGuide
-            NSLayoutConstraint.activate([view.topAnchor.constraint(equalTo: guide.topAnchor, constant: standardSpacing)])
+            
+            switch mode {
+            case .top:
+                NSLayoutConstraint.activate([view.topAnchor.constraint(equalTo: guide.topAnchor, constant: standardSpacing)])
+                
+            case .bottom:
+                NSLayoutConstraint.activate([view.topAnchor.constraint(equalTo: guide.bottomAnchor, constant: standardSpacing)])
+                
+            case .fillVertical:
+                NSLayoutConstraint.activate([
+                    view.topAnchor.constraint(equalTo: guide.topAnchor, constant: standardSpacing),
+                    guide.bottomAnchor.constraint(equalToSystemSpacingBelow: view.bottomAnchor, multiplier: 1.0)
+                    ])
+            }
             
         } else {
-            NSLayoutConstraint.activate([
-                view.topAnchor.constraint(equalTo: controller.topLayoutGuide.bottomAnchor, constant: standardSpacing)])
+            switch mode {
+            case .top:
+                NSLayoutConstraint.activate([view.topAnchor.constraint(equalTo: controller.topLayoutGuide.topAnchor, constant: standardSpacing)])
+                
+            case .bottom:
+                NSLayoutConstraint.activate([view.topAnchor.constraint(equalTo: controller.topLayoutGuide.bottomAnchor, constant: standardSpacing)])
+                
+            case .fillVertical:
+                NSLayoutConstraint.activate([
+                    view.topAnchor.constraint(equalTo: controller.topLayoutGuide.bottomAnchor, constant: standardSpacing),
+                    controller.bottomLayoutGuide.topAnchor.constraint(equalTo: view.bottomAnchor, constant: standardSpacing)
+                    ])
+            }
         }
     }
     
