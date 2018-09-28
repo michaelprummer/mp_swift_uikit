@@ -111,15 +111,7 @@ public class mui {
     
 
     
-    public struct MimeType {
-        struct Video {
-            static let MP4 = "video/mp4"
-        }
-        
-        struct Image {
-            static let PNG = "image/png"
-        }
-    }
+
     
     //    static var navigationController: UINavigationController? {
     //        return UIApplication.shared.delegate!.window??.rootViewController as? UINavigationController
@@ -176,15 +168,26 @@ public class mui {
         }
     }
     
-    
-    
-    public static func appNameAndVersionNumberDisplayString(_ devMode:String = "") -> String {
-        let dict:NSDictionary = Bundle.main.infoDictionary! as NSDictionary
-        let majorVersion:String = dict.object(forKey: "CFBundleShortVersionString") as! String
-        let minorVersion:String = dict.object(forKey: "CFBundleVersion") as! String
+    public struct tools {
+        public static func appNameAndVersionNumberDisplayString(_ devMode:String = "") -> String {
+            let dict:NSDictionary = Bundle.main.infoDictionary! as NSDictionary
+            let majorVersion:String = dict.object(forKey: "CFBundleShortVersionString") as! String
+            let minorVersion:String = dict.object(forKey: "CFBundleVersion") as! String
+            
+            return "Version " + majorVersion + " (" + minorVersion + ")\(devMode)"
+        }
         
-        return "Version " + majorVersion + " (" + minorVersion + ")\(devMode)"
+        public struct MimeType {
+            struct Video {
+                static let MP4 = "video/mp4"
+            }
+            
+            struct Image {
+                static let PNG = "image/png"
+            }
+        }
     }
+    
     
     
     //    static func attributedString(_ title: String, type: kTPRAttributedStringType, color: UIColor? = nil, lineBreakMode: NSLineBreakMode = .byTruncatingTail) -> NSAttributedString {
@@ -207,7 +210,7 @@ public class mui {
     
     // Pin to safe area
     //
-    func pinVerticalSafeArea(_ controller: UIViewController, target view: UIView, standardSpacing: CGFloat = 0){
+    public func pinVerticalSafeArea(_ controller: UIViewController, target view: UIView, standardSpacing: CGFloat = 0){
         if #available(iOS 11, *) {
             let guide = controller.view.safeAreaLayoutGuide
             NSLayoutConstraint.activate([
@@ -223,7 +226,7 @@ public class mui {
         }
     }
     
-    func pinTopSafeArea(_ controller: UIViewController, target view: UIView, standardSpacing: CGFloat = 0){
+    public func pinTopSafeArea(_ controller: UIViewController, target view: UIView, standardSpacing: CGFloat = 0){
         if #available(iOS 11, *) {
             let guide = controller.view.safeAreaLayoutGuide
             NSLayoutConstraint.activate([view.topAnchor.constraint(equalTo: guide.topAnchor, constant: standardSpacing)])
@@ -234,6 +237,41 @@ public class mui {
         }
     }
     
+    public static func layoutConstraint(_ item: UIView, attribute: NSLayoutConstraint.Attribute, toItem: UIView!, toAttribute: NSLayoutConstraint.Attribute, constant: CGFloat = 0) -> [NSLayoutConstraint] {
+        return [NSLayoutConstraint(item: item, attribute: attribute, relatedBy: .equal, toItem: toItem, attribute: toAttribute, multiplier: 1, constant: constant)]
+    }
+    
+    
+    public static func layoutConstant(_ const: String, views: [String:AnyObject]) -> [NSLayoutConstraint] {
+        return NSLayoutConstraint.constraints(withVisualFormat: const, options: [], metrics: nil, views: views)
+    }
+    
+    
+    public static func layout(_ view: UIView, mode: UIView.kMUILayoutMode, _ value: CGFloat = 0) -> [NSLayoutConstraint] {
+        let desc = "view_\(view.hash)"
+        switch mode {
+        case .fillH:
+            return layoutConstant("H:|-\(value)-[\(desc)]-\(value)-|", views: [desc : view])
+        case .fillV:
+            return layoutConstant("V:|-\(value)-[\(desc)]-\(value)-|", views: [desc : view])
+        case .bottom:
+            return layoutConstant("V:[\(desc)]-\(value)-|", views: [desc : view])
+        case .top:
+            return layoutConstant("V:|-\(value)-[\(desc)]", views: [desc : view])
+        case .left:
+            return layoutConstant("H:|-\(value)-[\(desc)]", views: [desc : view])
+        case .right:
+            return layoutConstant("H:[\(desc)]-\(value)-|", views: [desc : view])
+        case .width:
+            return layoutConstant("H:[\(desc)(\(value))]", views: [desc : view])
+        case .height:
+            return layoutConstant("V:[\(desc)(\(value))]", views: [desc : view])
+        case .centerX:
+            return layoutConstraint(view, attribute: .centerX, toItem: view.superview!, toAttribute: .centerX)
+        case .centerY:
+            return layoutConstraint(view, attribute: .centerY, toItem: view.superview!, toAttribute: .centerY, constant: value)
+        }
+    }
     
 }
 
