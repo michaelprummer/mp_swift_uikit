@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MUILayout'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'AutoLayout and UI crator tool for Swift.'
   s.swift_version	 = '4.2
   '
