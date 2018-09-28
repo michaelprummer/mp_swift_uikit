@@ -242,7 +242,7 @@ public class mui {
     }
     
     
-    public static func layoutConstant(_ const: String, views: [String:AnyObject]) -> [NSLayoutConstraint] {
+    static func layoutConstant(_ const: String, views: [String:AnyObject]) -> [NSLayoutConstraint] {
         return NSLayoutConstraint.constraints(withVisualFormat: const, options: [], metrics: nil, views: views)
     }
     
@@ -267,7 +267,7 @@ public class mui {
         case .height:
             return layoutConstant("V:[\(desc)(\(value))]", views: [desc : view])
         case .centerX:
-            return layoutConstraint(view, attribute: .centerX, toItem: view.superview!, toAttribute: .centerX)
+            return layoutConstraint(view, attribute: .centerX, toItem: view.superview!, toAttribute: .centerX, constant: value)
         case .centerY:
             return layoutConstraint(view, attribute: .centerY, toItem: view.superview!, toAttribute: .centerY, constant: value)
         }
