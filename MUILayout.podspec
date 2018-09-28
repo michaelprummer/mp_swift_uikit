@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MUILayout'
-  s.version          = '0.1.0'
+  s.version          = '0.0.1'
   s.summary          = 'AutoLayout and UI crator tool for Swift.'
   s.swift_version	 = '4.2
   '
@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
   s.description      = 'Wrapper for simple creation of AutoLayout constraints and UI crator tool for meant for Swift Apps without Storyboard.'
                        
 
-  s.homepage         = 'https://github.com/michaelprummer/mp_swift_uikit/tree/master/mpSwiftUiKit'
+  s.homepage         = 'https://github.com/michaelprummer/mp_swift_uikit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Michael Prummer' => 'prummermichael@gmail.com' }
-  s.source           = { :git => 'https://github.com/michaelprummer/mp_swift_uikit/tree/master/mpSwiftUiKit.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/michaelprummer/mp_swift_uikit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
