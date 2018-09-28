@@ -17,14 +17,14 @@ class ViewController: UIViewController {
         
         let width: CGFloat = 40
         
-        exampleView = mui.view(color: .mTomato, radius: width/2)
+        exampleView = mui.create.view(.mGreenBlue, radius: width/2)
         view.addSubview(exampleView)
         
         exampleView.layout([
             .width: width,
             .height: width,
             .top: 200,
-            .left: 32
+            .centerX: 0
         ])
     
         

@@ -7,7 +7,7 @@
 import UIKit
 
 extension UIView {
-    public enum kMUILayoutMode:Int {case hori, vert, bottom, top, left, right, width, height}
+    public enum kMUILayoutMode:Int {case fillH, fillV, bottom, top, left, right, width, height, centerX, centerY}
     
     public func layout(_ muiConstraints: [kMUILayoutMode: CGFloat]) {
         if translatesAutoresizingMaskIntoConstraints {
@@ -22,47 +22,23 @@ extension UIView {
         NSLayoutConstraint.activate(constList)
     }
 
-    
 
-
-//    // TPTextField
-//    //
-//    static func tpPasswordTextField() -> TPTextField {
-//        let tf = TPTextField(fontType: .csRegular14Left, color: .taWhite)
-//        tf.font = kTPRAttributedStringType.csRegular14Left.font
-//        tf.isSecureTextEntry = true
-//        tf.translatesAutoresizingMaskIntoConstraints = false
-//        tf.attributedPlaceholder = TPTools.attributedString(NSLocalizedString("Enter your password.", comment: "TPTools_EnterPassword."), type: .csRegular14Left, color: .taBrownishGrey)
-//        tf.autocorrectionType = .no
-//        tf.spellCheckingType = .no
-//        tf.autocapitalizationType = .none
-//        tf.contentVerticalAlignment = .center
-//        return tf
-//    }
-//
-//
-//    // #selector(handleRefresh(_:))
-//    class func tpRefreshControl(target: AnyObject, onComplete action: Selector) -> UIRefreshControl {
-//        let refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(target, action: action, for: .valueChanged)
-//        refreshControl.backgroundColor = .taBlackTwo
-//        refreshControl.tintColor = .white
-//        //refreshControl.attributedTitle = TPTools.attributedString(NSLocalizedString("Reloading data", comment: "TPPriceTagViewController_ReloadData"), type: .csRegular12Center, color: .white)
-//        return refreshControl
-//    }
-//
-//
     private func layoutConstraint(_ item: UIView, attribute: NSLayoutConstraint.Attribute, toItem: UIView!, toAttribute: NSLayoutConstraint.Attribute, constant: CGFloat = 0) -> [NSLayoutConstraint] {
         return [NSLayoutConstraint(item: item, attribute: attribute, relatedBy: .equal, toItem: toItem, attribute: toAttribute, multiplier: 1, constant: constant)]
     }
 
+    
+    private func layoutConstant(_ const: String, views: [String:AnyObject]) -> [NSLayoutConstraint] {
+        return NSLayoutConstraint.constraints(withVisualFormat: const, options: [], metrics: nil, views: views)
+    }
+    
 
     private func layout(_ view: UIView, mode: kMUILayoutMode, _ value: CGFloat = 0) -> [NSLayoutConstraint] {
         let desc = "view_\(view.hash)"
         switch mode {
-        case .hori:
+        case .fillH:
             return layoutConstant("H:|-\(value)-[\(desc)]-\(value)-|", views: [desc : view])
-        case .vert:
+        case .fillV:
             return layoutConstant("V:|-\(value)-[\(desc)]-\(value)-|", views: [desc : view])
         case .bottom:
             return layoutConstant("V:[\(desc)]-\(value)-|", views: [desc : view])
@@ -76,14 +52,14 @@ extension UIView {
             return layoutConstant("H:[\(desc)(\(value))]", views: [desc : view])
         case .height:
             return layoutConstant("V:[\(desc)(\(value))]", views: [desc : view])
+        case .centerX:
+            return layoutConstraint(view, attribute: .centerX, toItem: view.superview!, toAttribute: .centerX)
+        case .centerY:
+            return layoutConstraint(view, attribute: .centerY, toItem: view.superview!, toAttribute: .centerY, constant: value)
         }
     }
 
 
-
-
-    private func layoutConstant(_ const: String, views: [String:AnyObject]) -> [NSLayoutConstraint] {
-        return NSLayoutConstraint.constraints(withVisualFormat: const, options: [], metrics: nil, views: views)
-    }
+    
 
 }
