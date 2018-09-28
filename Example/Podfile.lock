@@ -1,0 +1,16 @@
+PODS:
+  - MUILayout (0.1.0)
+
+DEPENDENCIES:
+  - MUILayout (from `../`)
+
+EXTERNAL SOURCES:
+  MUILayout:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  MUILayout: d41f4205ec5a0e3828dbdfa8e82201e46fb009d0
+
+PODFILE CHECKSUM: 161f7d53d1facc54b24a9ceb0642b729baaefff6
+
+COCOAPODS: 1.5.3

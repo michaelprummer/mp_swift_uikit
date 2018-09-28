@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MUILayout_Example' do
+  pod 'MUILayout', :path => '../'
+
+  target 'MUILayout_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
