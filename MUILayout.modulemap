@@ -1,0 +1,6 @@
+framework module MUILayout {
+  umbrella header "MUILayout-umbrella.h"
+
+  export *
+  module * { export * }
+}

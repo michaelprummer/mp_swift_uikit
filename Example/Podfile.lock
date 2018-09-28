@@ -1,5 +1,5 @@
 PODS:
-  - MUILayout (0.1.0)
+  - MUILayout (0.0.1)
 
 DEPENDENCIES:
   - MUILayout (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MUILayout: d41f4205ec5a0e3828dbdfa8e82201e46fb009d0
+  MUILayout: 0bab5ab64b58c0a2836a4a9038d83c4530c26e28
 
 PODFILE CHECKSUM: 161f7d53d1facc54b24a9ceb0642b729baaefff6
 

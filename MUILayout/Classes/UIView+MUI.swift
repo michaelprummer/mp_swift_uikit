@@ -7,9 +7,9 @@
 import UIKit
 
 extension UIView {
-    enum kMUILayoutMode:Int {case hori, vert, bottom, top, left, right, width, height}
+    public enum kMUILayoutMode:Int {case hori, vert, bottom, top, left, right, width, height}
     
-    func layout(_ muiConstraints: [kMUILayoutMode: CGFloat]) {
+    public func layout(_ muiConstraints: [kMUILayoutMode: CGFloat]) {
         if translatesAutoresizingMaskIntoConstraints {
            translatesAutoresizingMaskIntoConstraints = false
         }

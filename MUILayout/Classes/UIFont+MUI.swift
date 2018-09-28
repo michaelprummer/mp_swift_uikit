@@ -7,11 +7,11 @@
 //
 
 import Foundation
-enum kFontWeight {case light, regular, medium, bold }
-enum kFontStyle { case H16 }
+public enum kFontWeight {case light, regular, medium, bold }
+public enum kFontStyle { case H16 }
 
 extension UIFont {
-    struct mui {
+    public struct mui {
         private static func tpCSRegular(fontSize: CGFloat) -> UIFont {
             return UIFont(name: "Roboto-Regular", size: fontSize)!
         }
@@ -50,7 +50,7 @@ extension UIFont {
         }
         
         
-        static func attributes() -> [String:Any]{
+        public static func attributes() -> [String:Any]{
             let attr = [String:Any]()
             
             return attr

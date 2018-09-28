@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "mpSwiftUiKit.h"
 
 FOUNDATION_EXPORT double MUILayoutVersionNumber;
 FOUNDATION_EXPORT const unsigned char MUILayoutVersionString[];

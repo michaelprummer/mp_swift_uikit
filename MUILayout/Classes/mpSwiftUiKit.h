@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double mpSwiftUiKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char mpSwiftUiKitVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <mpSwiftUiKit/PublicHeader.h>
-
-

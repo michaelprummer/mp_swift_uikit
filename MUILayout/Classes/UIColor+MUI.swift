@@ -7,35 +7,35 @@
 //
 
 extension UIColor {
-    class var mGreenBlue: UIColor {
+    public class var mGreenBlue: UIColor {
         return UIColor(red: 1.0 / 255.0, green: 169.0 / 255.0, blue: 157.0 / 255.0, alpha: 1.0)
     }
     
-    class var mSand: UIColor {
+    public class var mSand: UIColor {
         return UIColor(red: 194.0 / 255.0, green: 179.0 / 255.0, blue: 162.0 / 255.0, alpha: 1.0)
     }
     
-    class var mBlackTwo: UIColor {
+    public class var mBlackTwo: UIColor {
         return UIColor(white: 51.0 / 255.0, alpha: 1.0)
     }
     
-    class var mGreyishBrown: UIColor {
+    public class var mGreyishBrown: UIColor {
         return UIColor(white: 63.0 / 255.0, alpha: 1.0)
     }
     
-    class var mBrownishGrey: UIColor {
+    public class var mBrownishGrey: UIColor {
         return UIColor(white: 102.0 / 255.0, alpha: 1.0)
     }
     
-    class var mWhite: UIColor {
+    public class var mWhite: UIColor {
         return UIColor(white: 248.0 / 255.0, alpha: 1.0)
     }
     
-    class var mVermillion: UIColor {
+    public class var mVermillion: UIColor {
         return UIColor(red: 240.0 / 255.0, green: 16.0 / 255.0, blue: 16.0 / 255.0, alpha: 1.0)
     }
     
-    class var mBrownGrey: UIColor {
+    public class var mBrownGrey: UIColor {
         return UIColor(red: 136.0 / 255.0, green: 128.0 / 255.0, blue: 117.0 / 255.0, alpha: 1.0)
     }
     
