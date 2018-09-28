@@ -227,7 +227,7 @@ public class mui {
     
     public struct tools {
         public static func isNilOrEmtpy(_ str: String?) -> Bool {
-            return str != nil && !str!.isEmpty
+            return str?.isEmpty ?? true
         }
         
         public static func appNameAndVersionNumberDisplayString(_ devMode:String = "") -> String {
