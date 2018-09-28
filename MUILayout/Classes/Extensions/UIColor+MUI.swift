@@ -6,6 +6,8 @@
 //  Copyright © 2018 Michael Prummer. All rights reserved.
 //
 
+import UIKit
+
 extension UIColor {
     public class var mGreenBlue: UIColor {
         return UIColor(red: 1.0 / 255.0, green: 169.0 / 255.0, blue: 157.0 / 255.0, alpha: 1.0)
