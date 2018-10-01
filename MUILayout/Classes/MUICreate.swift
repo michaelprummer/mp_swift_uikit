@@ -188,7 +188,7 @@ public class mui {
         
         
         private static func regular(fontSize: CGFloat) -> UIFont {
-            return UIFont(name: "Roboto-Regular", size: fontSize)!
+            return UIFont(name: mui.shared.settings.font.name.regular, size: fontSize)!
         }
         
         private static func medium(fontSize: CGFloat) -> UIFont {
