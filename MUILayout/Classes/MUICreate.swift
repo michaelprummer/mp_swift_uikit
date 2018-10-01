@@ -12,9 +12,9 @@ import UIKit
 // Overwrite with your settings
 //
 public class DefaultSettings {
-    var font = FontSettings()
+    public var font = FontSettings()
     
-    struct FontSettings {
+    public struct FontSettings {
         var size = FontSize()
         var name = FontName()
         
