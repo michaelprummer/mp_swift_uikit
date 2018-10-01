@@ -15,8 +15,8 @@ public class DefaultSettings {
     public var font = FontSettings()
     
     public struct FontSettings {
-        var size = FontSize()
-        var name = FontName()
+        public var size = FontSize()
+        public var name = FontName()
         
         init() {}
         
@@ -49,7 +49,7 @@ public class mui {
             v.isUserInteractionEnabled = false
             v.backgroundColor = color
             v.alpha = opacity
-            return v            
+            return v
         }
         
         
