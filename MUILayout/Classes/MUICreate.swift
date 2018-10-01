@@ -49,8 +49,7 @@ public class mui {
             v.isUserInteractionEnabled = false
             v.backgroundColor = color
             v.alpha = opacity
-            return v
-            mui.shared.settings.font.name.bold = ""
+            return v            
         }
         
         
@@ -193,19 +192,19 @@ public class mui {
         }
         
         private static func medium(fontSize: CGFloat) -> UIFont {
-            return UIFont(name: "Roboto-Medium", size: fontSize)!
+            return UIFont(name: mui.shared.settings.font.name.medium, size: fontSize)!
         }
         
         private static func bold(fontSize: CGFloat) -> UIFont {
-            return UIFont(name: "Roboto-Bold", size: fontSize)!
+            return UIFont(name: mui.shared.settings.font.name.bold, size: fontSize)!
         }
         
         private static func light(fontSize: CGFloat) -> UIFont {
-            return UIFont(name: "Roboto-Light", size: fontSize)!
+            return UIFont(name: mui.shared.settings.font.name.light, size: fontSize)!
         }
         
         private static func condensed(fontSize: CGFloat) -> UIFont {
-            return UIFont(name: "RobotoCondensed-Regular", size: fontSize)!
+            return UIFont(name: mui.shared.settings.font.name.regular, size: fontSize)!
         }
         
         
@@ -282,9 +281,20 @@ public class mui {
     
     
     
-    //    static func attributedString(_ title: String, type: kTPRAttributedStringType, color: UIColor? = nil, lineBreakMode: NSLineBreakMode = .byTruncatingTail) -> NSAttributedString {
-    //        return NSAttributedString(string: title, attributes: NSDictionary.attributeDictionaryForStringType(type, color: color, lineBreakMode: lineBreakMode))
-    //    }
+
+    static func attributedString(_ title: String, type: mui.fonts.kMUIFont, fontSize: CGFloat = mui.shared.settings.font.size.regular, color: UIColor? = nil, lineBreakMode: NSLineBreakMode = .byTruncatingTail) -> NSAttributedString {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.minimumLineHeight = 0.0
+        paragraphStyle.alignment = .left
+        let fontColor: UIColor = color ?? .white
+        let kerning: NSNumber = 0
+        paragraphStyle.lineBreakMode = lineBreakMode
+        
+        return NSAttributedString(string: title, attributes: [.paragraphStyle: paragraphStyle,
+                                                              .kern : kerning,
+                                                              .font: type.font(size: fontSize),
+                                                              .foregroundColor: fontColor])
+    }
     //
     //
     //

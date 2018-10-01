@@ -1,9 +1,6 @@
 //
-//  TPInputField.swift
-//  TagPresso
 //
 //  Created by Michael Prummer on 08/09/16.
-//  Copyright © 2016 Maximilian Baro. All rights reserved.
 //
 
 import UIKit

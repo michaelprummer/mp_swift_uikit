@@ -21,6 +21,7 @@
 		EFA10F1C0F01DE8A866ECB10AE60177F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		F3228E89215E817B0076AAF4 /* UIColor+MUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3228E87215E817B0076AAF4 /* UIColor+MUI.swift */; };
 		F3228E8A215E817B0076AAF4 /* UIView+MUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3228E88215E817B0076AAF4 /* UIView+MUI.swift */; };
+		F35FB902216272F700741A79 /* TPLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35FB901216272F700741A79 /* TPLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		EA92E343AC03D18C84344FA08DEED501 /* Pods-MUILayout_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MUILayout_Tests-umbrella.h"; sourceTree = "<group>"; };
 		F3228E87215E817B0076AAF4 /* UIColor+MUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+MUI.swift"; sourceTree = "<group>"; };
 		F3228E88215E817B0076AAF4 /* UIView+MUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+MUI.swift"; sourceTree = "<group>"; };
+		F35FB901216272F700741A79 /* TPLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TPLabel.swift; path = MUILayout/Classes/TPLabel.swift; sourceTree = "<group>"; };
 		F413B6E45C31DB3D30FF61B7C7EC8863 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC914ABF9447C5EFD9BB5CA89246EF99 /* MUILayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MUILayout-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,6 +233,7 @@
 				865528487094A833F25FF68C71833712 /* mpSwiftUiKit.h */,
 				68A97284F64A7A30303DE52E38744049 /* MUICreate.swift */,
 				A4E2B264F51569E0E7A63956DF00C5A8 /* TPTextField.swift */,
+				F35FB901216272F700741A79 /* TPLabel.swift */,
 				3B03B96ECB3A45AAFEB013CFE1147043 /* Pod */,
 				2C6D3FA3CD6FF675C123D439B6237715 /* Support Files */,
 			);
@@ -385,6 +388,7 @@
 				F3228E8A215E817B0076AAF4 /* UIView+MUI.swift in Sources */,
 				251BB4B17B8BD246B1390B2507AEACD6 /* MUILayout-dummy.m in Sources */,
 				08F6823737771CCE1DD73D703EF859C0 /* TPTextField.swift in Sources */,
+				F35FB902216272F700741A79 /* TPLabel.swift in Sources */,
 				F3228E89215E817B0076AAF4 /* UIColor+MUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
