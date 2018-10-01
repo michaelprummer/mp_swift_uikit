@@ -9,8 +9,11 @@
 import UIKit
 
 public class mui {
+    public static let shared = mui()
+    public var defaultFontSizeForText: CGFloat = 15.5
+    
+    
     public struct create {
-        
         public static func border(opacity: CGFloat = 1.0, color: UIColor = .mBrownishGrey) -> UIView {
             let v = UIView()
             v.translatesAutoresizingMaskIntoConstraints = false
@@ -134,12 +137,10 @@ public class mui {
     
     
     public struct fonts {
-        public static var defaultFontSize: CGFloat = 15.5
-        
         public enum kMUIFont {
             case light, regular, medium, bold, condensed
             
-            func font(size: CGFloat = mui.fonts.defaultFontSize) -> UIFont {
+            func font(size: CGFloat = mui.shared.defaultFontSizeForText) -> UIFont {
                 switch self {
                 case .bold:
                     return mui.fonts.bold(fontSize: size)
@@ -274,7 +275,7 @@ public class mui {
     
     public enum kSafeLayoutAnchor { case top, bottom, fillVertical }
     
-    public func pinSafeArea(_ controller: UIViewController, target view: UIView, mode: kSafeLayoutAnchor, standardSpacing: CGFloat = 0){
+    public static func pinSafeArea(_ controller: UIViewController, target view: UIView, mode: kSafeLayoutAnchor, standardSpacing: CGFloat = 0){
         if #available(iOS 11, *) {
             let guide = controller.view.safeAreaLayoutGuide
             
