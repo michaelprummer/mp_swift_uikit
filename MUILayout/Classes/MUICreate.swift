@@ -8,9 +8,38 @@
 
 import UIKit
 
+//
+// Overwrite with your settings
+//
+public class DefaultSettings {
+    var font = FontSettings()
+    
+    struct FontSettings {
+        var size = FontSize()
+        var name = FontName()
+        
+        init() {}
+        
+        public struct FontSize {
+            public var regular: CGFloat = 15.5
+            public var large: CGFloat = 18
+            public var small: CGFloat = 12
+        }
+        
+        public struct FontName {
+            public var regular = "Roboto-Regular"
+            public var medium = "Roboto-Medium"
+            public var bold = "Roboto-Bold"
+            public var light = "Roboto-Light"
+            public var condensed = "RobotoCondensed-Regular"
+        }
+    }
+    
+}
+
 public class mui {
     public static let shared = mui()
-    public var defaultFontSizeForText: CGFloat = 15.5
+    public var settings = DefaultSettings()
     
     
     public struct create {
@@ -21,6 +50,7 @@ public class mui {
             v.backgroundColor = color
             v.alpha = opacity
             return v
+            mui.shared.settings.font.name.bold = ""
         }
         
         
@@ -140,7 +170,7 @@ public class mui {
         public enum kMUIFont {
             case light, regular, medium, bold, condensed
             
-            func font(size: CGFloat = mui.shared.defaultFontSizeForText) -> UIFont {
+            func font(size: CGFloat = mui.shared.settings.font.size.regular) -> UIFont {
                 switch self {
                 case .bold:
                     return mui.fonts.bold(fontSize: size)
