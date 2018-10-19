@@ -111,6 +111,7 @@ public class mui {
             btn.translatesAutoresizingMaskIntoConstraints = false
             btn.titleLabel?.font = fontStyle.font(size: fontSize)
             btn.contentHorizontalAlignment = alignment
+            btn.setTitleColor(color, for: .normal)
             btn.setTitle(title, for: .normal)
             return btn
         }
