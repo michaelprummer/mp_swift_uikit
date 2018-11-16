@@ -365,25 +365,33 @@ public class mui {
         let desc = "view_\(view.hash)"
         switch mode {
         case .fillH:
-            return layoutConstant("H:|-(\(value))-[\(desc)]-(\(value))-|", views: [desc : view])
+            return layoutConstant("H:|-\(abs(value))-[\(desc)]-\(abs(value))-|", views: [desc : view])
         case .fillV:
-            return layoutConstant("V:|-(\(value))-[\(desc)]-(\(value))-|", views: [desc : view])
+            return layoutConstant("V:|-\(abs(value))-[\(desc)]-\(abs(value))-|", views: [desc : view])
         case .bottom:
             return layoutConstant("V:[\(desc)]-(\(value))-|", views: [desc : view])
         case .top:
             return layoutConstant("V:|-(\(value))-[\(desc)]", views: [desc : view])
         case .left:
-            return layoutConstant("H:|-\((value))-[\(desc)]", views: [desc : view])
+            return layoutConstant("H:|-(\(value))-[\(desc)]", views: [desc : view])
         case .right:
             return layoutConstant("H:[\(desc)]-(\(value))-|", views: [desc : view])
         case .width:
-            return layoutConstant("H:[\(desc)\(abs(value))]", views: [desc : view])
+            return layoutConstant("H:[\(desc)(\(abs(value)))]", views: [desc : view])
         case .height:
-            return layoutConstant("V:[\(desc)(\(abs(value))]", views: [desc : view])
+            return layoutConstant("V:[\(desc)(\(abs(value)))]", views: [desc : view])
         case .centerX:
-            return layoutConstraint(view, attribute: .centerX, toItem: view.superview!, toAttribute: .centerX, constant: value)
+            if view.superview != nil {
+                return layoutConstraint(view, attribute: .centerX, toItem: view.superview!, toAttribute: .centerX, constant: value)
+            } else {
+                return []
+            }
         case .centerY:
-            return layoutConstraint(view, attribute: .centerY, toItem: view.superview!, toAttribute: .centerY, constant: value)
+            if view.superview != nil {
+                return layoutConstraint(view, attribute: .centerY, toItem: view.superview!, toAttribute: .centerY, constant: value)
+            } else {
+                return []
+            }
         }
     }
     
