@@ -1,6 +1,5 @@
 # MUILayout
 
-[![CI Status](https://img.shields.io/travis/Michael Prummer/MUILayout.svg?style=flat)](https://travis-ci.org/Michael Prummer/MUILayout)
 [![Version](https://img.shields.io/cocoapods/v/MUILayout.svg?style=flat)](https://cocoapods.org/pods/MUILayout)
 [![License](https://img.shields.io/cocoapods/l/MUILayout.svg?style=flat)](https://cocoapods.org/pods/MUILayout)
 [![Platform](https://img.shields.io/cocoapods/p/MUILayout.svg?style=flat)](https://cocoapods.org/pods/MUILayout)
