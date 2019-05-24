@@ -114,7 +114,7 @@ class MUILabel: UILabel {
     
     var verticalAlignment : VerticalAlignment = .none {
         didSet {
-            if self != .none {
+            if self.verticalAlignment != .none {
                 setNeedsDisplay()
             }
         }

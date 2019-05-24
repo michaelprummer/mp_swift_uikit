@@ -1,9 +1,9 @@
 {
   "name": "MUILayout",
-  "version": "0.0.6",
+  "version": "0.0.10",
   "summary": "AutoLayout and UI crator tool for Swift.",
-  "swift_version": "4.2",
-  "description": "Wrapper for simple creation of AutoLayout constraints and UI crator tool for meant for Swift Apps without Storyboard.",
+  "swift_version": "5.0",
+  "description": "Wrapper for simple creation of AutoLayout constraints and UI crator tool for Apps without Storyboard.",
   "homepage": "https://github.com/michaelprummer/mp_swift_uikit",
   "license": {
     "type": "MIT",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/michaelprummer/mp_swift_uikit.git",
-    "tag": "0.0.6"
+    "tag": "0.0.10"
   },
   "platforms": {
     "ios": "9.0"
